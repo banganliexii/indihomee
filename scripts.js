@@ -1,4 +1,3 @@
-// Membership Packages Data (ID & EN)
 const packagesData = {
   id: [
     {
@@ -8,7 +7,7 @@ const packagesData = {
       price: "Mulai dari Rp265.000/bulan",
       desc: "Cocok untuk rumah kecil & streaming santai",
       cta: "Daftar Sekarang",
-      link: "https://wa.me/6289637100670?text=Saya+ingin+langganan+Digital+Jitu+1",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-dynamic.png",
@@ -17,7 +16,7 @@ const packagesData = {
       price: "Mulai dari Rp370.000/bulan",
       desc: "Termasuk paket suara & SMS. Ideal untuk rumah aktif & gamer",
       cta: "Konsultasi Gratis",
-      link: "https://wa.me/6289637100670?text=Saya+ingin+info+Dynamic+1P",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-movie.png",
@@ -26,7 +25,7 @@ const packagesData = {
       price: "Mulai dari Rp379.000/bulan",
       desc: "Gratis Netflix + Disney+ Hotstar. Untuk pecinta film",
       cta: "Daftar Sekarang",
-      link: "https://wa.me/6289637100670?text=Saya+ingin+langganan+Movie+1P",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-complete.png",
@@ -35,7 +34,7 @@ const packagesData = {
       price: "Mulai dari Rp405.000/bulan",
       desc: "Berbagi data keluarga + suara & SMS. Pas untuk keluarga besar",
       cta: "Konsultasi Gratis",
-      link: "https://wa.me/6289637100670?text=Saya+ingin+info+Complete+1P",
+      link: "https://wa.me/6282315321424",
     },
   ],
   en: [
@@ -46,7 +45,7 @@ const packagesData = {
       price: "Starts from Rp265,000/month",
       desc: "Ideal for small homes & casual streaming",
       cta: "Register Now",
-      link: "https://wa.me/6289637100670?text=I+want+to+subscribe+Digital+Jitu+1",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-dynamic.png",
@@ -55,7 +54,7 @@ const packagesData = {
       price: "Starts from Rp370,000/month",
       desc: "Includes voice & SMS. Perfect for active homes & gamers",
       cta: "Free Consultation",
-      link: "https://wa.me/6289637100670?text=I+want+info+Dynamic+1P",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-movie.png",
@@ -64,7 +63,7 @@ const packagesData = {
       price: "Starts from Rp379,000/month",
       desc: "Free Netflix + Disney+ Hotstar. For movie lovers",
       cta: "Register Now",
-      link: "https://wa.me/6289637100670?text=I+want+to+subscribe+Movie+1P",
+      link: "https://wa.me/6282315321424",
     },
     {
       icon: "icon-complete.png",
@@ -73,12 +72,11 @@ const packagesData = {
       price: "Starts from Rp405,000/month",
       desc: "Family data sharing + voice & SMS. Great for big families",
       cta: "Free Consultation",
-      link: "https://wa.me/6289637100670?text=I+want+info+Complete+1P",
+      link: "https://wa.me/6282315321424",
     },
   ],
 };
 
-// Texts for ID & EN
 const texts = {
   id: {
     heroTitle:
@@ -219,9 +217,13 @@ function renderPackageCards() {
       <div class="package-speed">${pkg.speed}</div>
       <div class="package-price">${pkg.price}</div>
       <div class="package-desc">${pkg.desc}</div>
-      <a href="${pkg.link}" target="_blank" rel="noopener" aria-label="${pkg.cta} untuk ${pkg.name}">
-        <button class="package-cta btn-main ripple">${pkg.cta}</button>
-      </a>
+      <button
+        class="package-cta btn-main ripple"
+        data-link="${pkg.link}"
+        data-name="${pkg.name}"
+        data-lang="${currentLang}"
+        type="button"
+      >${pkg.cta}</button>
     `;
     packageSlider.appendChild(card);
   });
@@ -239,6 +241,20 @@ function renderPackageCards() {
   // Ripple effect for buttons
   packageSlider.querySelectorAll(".ripple").forEach((btn) => {
     btn.addEventListener("click", function (e) {
+      // WhatsApp Link with Template Pesan
+      const link = btn.getAttribute("data-link");
+      const name = btn.getAttribute("data-name");
+      const lang = btn.getAttribute("data-lang");
+      let pesan = "";
+      if (lang === "id") {
+        pesan = `Saya ingin berlangganan paket ${name}`;
+      } else {
+        pesan = `I want to subscribe to the ${name} package`;
+      }
+      const waLink = `${link}?text=${encodeURIComponent(pesan)}`;
+      window.open(waLink, "_blank");
+
+      // Ripple Animation
       const circle = document.createElement("span");
       circle.className = "ripple-anim";
       circle.style.left = `${e.offsetX}px`;
@@ -249,11 +265,10 @@ function renderPackageCards() {
   });
 }
 
-// IMPROVISASI: Render 3 Promo Images (image1, image2, image3) after heading
+// Render Promo Images (image1, image2, image3, image5) after heading
 function renderPromoImages() {
   let promoImagesContainer = document.querySelector(".package-images");
   if (!promoImagesContainer) {
-    // Create container if not exists
     promoImagesContainer = document.createElement("div");
     promoImagesContainer.className = "package-images";
     promoImagesContainer.style.display = "flex";
@@ -261,7 +276,6 @@ function renderPromoImages() {
     promoImagesContainer.style.gap = "24px";
     promoImagesContainer.style.justifyContent = "center";
     promoImagesContainer.style.marginBottom = "32px";
-    // Insert after paket-heading
     const paketHeading = document.getElementById("paket-heading");
     if (paketHeading && paketHeading.parentNode) {
       paketHeading.parentNode.insertBefore(
@@ -271,9 +285,10 @@ function renderPromoImages() {
     }
   }
   promoImagesContainer.innerHTML = `
-    <img src="Paket Dynamic.jpg" alt="Paket Telkomsel One Dynamic" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
-    <img src="Paket EZnet.jpg" alt="Paket EZnet by Telkomsel" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
-    <img src="Paket Indihome Telkomsel.jpg" alt="Paket IndiHome by Telkomsel" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
+    <img src="Paket Dynamic.jpg" alt="Paket Telkomsel One Dynamic" width="100" loading="lazy" />
+    <img src="Paket EZnet.jpg" alt="Paket EZnet by Telkomsel" width="100" loading="lazy" />
+    <img src="Paket Indihome Telkomsel.jpg" alt="Paket IndiHome by Telkomsel" width="100" loading="lazy" />
+    <img src="Promo Paket One Dynamic 20Mbps+30GB.png" alt="Promo Paket One Dynamic 20Mbps+30GB" width="100" loading="lazy" />
   `;
 }
 
@@ -356,7 +371,7 @@ function initContactForm() {
     } else {
       waMsg = `Hello IndiHome! I am ${name} (${phone}) and want to claim the promo for ${packageName} package.`;
     }
-    const waLink = `https://wa.me/6289637100670?text=${encodeURIComponent(
+    const waLink = `https://wa.me/6282315321424?text=${encodeURIComponent(
       waMsg
     )}`;
     // Animate button
@@ -383,7 +398,7 @@ function initLangSwitcher() {
   });
 }
 
-// Rerender all text (hero, headings, benefits, CTA, FAQ, testimonials, form)
+// Rerender all text (hero, headings, benefits, CTA, FAQ, testimonials, form, images)
 function rerenderText() {
   document.getElementById("hero-title").innerHTML =
     texts[currentLang].heroTitle;
@@ -434,10 +449,7 @@ function rerenderText() {
       texts[currentLang].contactFormBtn;
   }
 
-  // Re-render package cards
   renderPackageCards();
-
-  // Re-render promo images
   renderPromoImages();
 }
 
