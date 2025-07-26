@@ -2,7 +2,7 @@
 const packagesData = {
   id: [
     {
-      icon: "icon-digital.png", // Use image for icon
+      icon: "icon-digital.png",
       name: "Paket Digital Jitu 1",
       speed: "30 / 50 / 100 Mbps",
       price: "Mulai dari Rp265.000/bulan",
@@ -249,6 +249,34 @@ function renderPackageCards() {
   });
 }
 
+// IMPROVISASI: Render 3 Promo Images (image1, image2, image3) after heading
+function renderPromoImages() {
+  let promoImagesContainer = document.querySelector(".package-images");
+  if (!promoImagesContainer) {
+    // Create container if not exists
+    promoImagesContainer = document.createElement("div");
+    promoImagesContainer.className = "package-images";
+    promoImagesContainer.style.display = "flex";
+    promoImagesContainer.style.flexWrap = "wrap";
+    promoImagesContainer.style.gap = "24px";
+    promoImagesContainer.style.justifyContent = "center";
+    promoImagesContainer.style.marginBottom = "32px";
+    // Insert after paket-heading
+    const paketHeading = document.getElementById("paket-heading");
+    if (paketHeading && paketHeading.parentNode) {
+      paketHeading.parentNode.insertBefore(
+        promoImagesContainer,
+        paketHeading.nextSibling
+      );
+    }
+  }
+  promoImagesContainer.innerHTML = `
+    <img src="Paket Dynamic.jpg" alt="Paket Telkomsel One Dynamic" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
+    <img src="Paket EZnet.jpg" alt="Paket EZnet by Telkomsel" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
+    <img src="Paket Indihome Telkomsel.jpg" alt="Paket IndiHome by Telkomsel" width="50" style="max-width:100%;height:auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-radius:5px;" loading="lazy" />
+  `;
+}
+
 // Slider Paket with Smooth Animation
 function initPackageSlider() {
   const packageSlider = document.querySelector(".package-slider");
@@ -408,9 +436,13 @@ function rerenderText() {
 
   // Re-render package cards
   renderPackageCards();
+
+  // Re-render promo images
+  renderPromoImages();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderPromoImages();
   renderPackageCards();
   initPackageSlider();
   initFAQAccordion();
