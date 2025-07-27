@@ -1,0 +1,144 @@
+/* IMPROVISASI: Promo Exposure Overlay */
+.promo-exposure-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 25, 28, 0.42);
+  transition: opacity 0.8s cubic-bezier(0.61, 0.01, 0.48, 1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.promo-exposure-overlay[hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+.promo-exposure-content {
+  width: 50vw;
+  min-width: 280px;
+  max-width: 480px;
+  height: 50vh;
+  min-height: 180px;
+  max-height: 380px;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 6px 32px rgba(230, 0, 18, 0.18);
+  border: 2px solid #e60012;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.7rem;
+  position: relative;
+  animation: fadeInOverlay 0.9s cubic-bezier(0.44, 1.67, 0.59, 0.68);
+}
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.promo-exposure-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.25rem;
+  font-size: 1.12rem;
+  background: #e60012;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  cursor: pointer;
+  font-family: "Poppins", "Roboto", Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(230, 0, 18, 0.1);
+  transition: background 0.17s, color 0.17s, transform 0.19s;
+}
+.promo-exposure-close:hover,
+.promo-exposure-close:focus {
+  background: #19191c;
+  color: #ffe200;
+  outline: 2px solid #e60012;
+  transform: scale(1.13);
+}
+.promo-exposure-text {
+  text-align: center;
+  font-family: "Poppins", "Roboto", Arial, sans-serif;
+  font-size: 0.87rem;
+  color: #19191c;
+  line-height: 1.58;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  margin-top: 0.6rem;
+}
+.promo-exposure-title {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #e60012;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.6px;
+}
+.promo-exposure-desc {
+  display: block;
+  font-size: 0.81rem;
+  color: #19191c;
+  font-weight: 400;
+}
+.promo-exposure-expiry {
+  color: #e60012;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.27rem;
+}
+.promo-exposure-desc mark {
+  background: #ffe200;
+  color: #e60012;
+  border-radius: 7px;
+  padding: 1px 6px;
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 0.3px;
+}
+
+/* Responsive improvisasi */
+@media (max-width: 700px) {
+  .promo-exposure-content {
+    width: 90vw;
+    height: 47vh;
+    padding: 0.7rem 0.8rem;
+    min-width: 160px;
+    max-width: 99vw;
+    min-height: 120px;
+    max-height: 99vw;
+  }
+  .promo-exposure-title {
+    font-size: 0.82rem;
+  }
+  .promo-exposure-desc {
+    font-size: 0.71rem;
+  }
+}
+@media (max-width: 480px) {
+  .promo-exposure-content {
+    width: 99vw;
+    height: 48vh;
+    padding: 0.45rem 0.3rem;
+  }
+  .promo-exposure-title {
+    font-size: 0.71rem;
+  }
+  .promo-exposure-desc {
+    font-size: 0.62rem;
+  }
+}

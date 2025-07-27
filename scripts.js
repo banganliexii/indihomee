@@ -238,32 +238,6 @@ function renderPackageCards() {
     packageSlider.appendChild(card);
   });
 
-  //exposure promo text
-  // IMPROVISASI: Promo Exposure Overlay
-  document.addEventListener("DOMContentLoaded", function () {
-    const overlay = document.getElementById("promo-exposure-overlay");
-    const closeBtn = overlay.querySelector(".promo-exposure-close");
-    let overlayTimeout;
-
-    overlay.removeAttribute("hidden");
-
-    overlayTimeout = setTimeout(() => {
-      overlay.setAttribute("hidden", "true");
-    }, 5000); // 5 detik
-
-    closeBtn.addEventListener("click", () => {
-      overlay.setAttribute("hidden", "true");
-      clearTimeout(overlayTimeout);
-    });
-
-    window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && overlay && !overlay.hasAttribute("hidden")) {
-        overlay.setAttribute("hidden", "true");
-        clearTimeout(overlayTimeout);
-      }
-    });
-  });
-
   // Animate icons on mouseover
   packageSlider.querySelectorAll(".bounce-icon").forEach((icon) => {
     icon.addEventListener("mouseenter", () => {
