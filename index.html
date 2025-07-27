@@ -8,7 +8,7 @@
       name="description"
       content="Nikmati internet stabil, streaming legal Disney+ Hotstar & Netflix, IndiHome TV, serta berbagi data keluarga. Pilih paket IndiHome sesuai kebutuhanmu!"
     />
-    <!-- Preload font for faster rendering -->
+    <!-- Font Preload & Styles -->
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
@@ -22,8 +22,39 @@
       />
     </noscript>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="promo-exposure.css" />
   </head>
   <body>
+    <!-- PROMO EXPOSURE OVERLAY (Improvisasi) -->
+    <div
+      id="promo-exposure-overlay"
+      class="promo-exposure-overlay"
+      aria-live="polite"
+      aria-modal="true"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div class="promo-exposure-content">
+        <button class="promo-exposure-close" aria-label="Tutup Iklan">
+          &times;
+        </button>
+        <div class="promo-exposure-text">
+          <span class="promo-exposure-title"
+            >Langganan sekaligus dapat internet rumah dan kuota seluler
+            berlimpah!</span
+          >
+          <span class="promo-exposure-desc">
+            Penuhi kebutuhan internet keluarga hanya dalam sekali langganan!
+            Dapatkan internet rumah dan kuota seluler untuk sekeluarga dengan
+            harga yang lebih hemat.<br />
+            <strong>Penawaran ini berlaku di kota-kota tertentu.</strong><br />
+            <span class="promo-exposure-expiry"
+              >Buruan, cuma sampai <mark>31 Desember 2025</mark>!</span
+            >
+          </span>
+        </div>
+      </div>
+    </div>
     <!-- LANGUAGE SWITCHER -->
     <nav class="lang-switch" aria-label="Pilih Bahasa / Choose Language">
       <button
@@ -96,12 +127,6 @@
             width="100"
             loading="lazy"
           />
-          <!-- Tambahan gambar promo utama -->
-          <img
-            src="Promo Paket One Dynamic 20Mbps+30GB.png"
-            alt="Promo Paket One Dynamic 20Mbps+30GB - Hemat & Cepat"
-            loading="lazy"
-          />
         </div>
         <div class="slider-container">
           <button
@@ -112,7 +137,7 @@
             &lt;
           </button>
           <div class="package-slider" tabindex="0" aria-live="polite">
-            <!-- Paket akan diisi oleh JS -->
+            <!-- Paket akan diisi oleh JS: termasuk promo utama sebagai pilihan -->
           </div>
           <button
             class="slider-arrow right btn-main"
@@ -190,7 +215,7 @@
         </div>
       </section>
 
-      <!-- FAQ SECTION with schema.org FAQPage for SEO -->
+      <!-- FAQ SECTION -->
       <section
         class="faq container"
         aria-labelledby="faq-heading"
@@ -223,9 +248,9 @@
               itemprop="acceptedAnswer"
               itemtype="https://schema.org/Answer"
             >
-              <span itemprop="text">
-                Aktivasi maksimal 24 jam setelah pendaftaran.
-              </span>
+              <span itemprop="text"
+                >Aktivasi maksimal 24 jam setelah pendaftaran.</span
+              >
             </div>
           </div>
           <div
@@ -252,9 +277,9 @@
               itemprop="acceptedAnswer"
               itemtype="https://schema.org/Answer"
             >
-              <span itemprop="text">
-                Pemasangan gratis selama periode promo.
-              </span>
+              <span itemprop="text"
+                >Pemasangan gratis selama periode promo.</span
+              >
             </div>
           </div>
           <div
@@ -281,15 +306,15 @@
               itemprop="acceptedAnswer"
               itemtype="https://schema.org/Answer"
             >
-              <span itemprop="text">
-                Pembayaran via autodebit, transfer bank, atau e-wallet.
-              </span>
+              <span itemprop="text"
+                >Pembayaran via autodebit, transfer bank, atau e-wallet.</span
+              >
             </div>
           </div>
         </div>
       </section>
 
-      <!-- TESTIMONIALS SECTION (Anonymous, 5 Stars) + schema.org Review -->
+      <!-- TESTIMONIALS SECTION (Anonymous, 5 Stars) -->
       <section
         class="testimonials container"
         aria-labelledby="testimonials-heading"
@@ -298,7 +323,7 @@
       >
         <h2 id="testimonials-heading">Ulasan Pengguna</h2>
         <div class="testimonials-list">
-          <!-- Example Testimoni with avatar anonymous and badge -->
+          <!-- Avatar & badge di bawah icon avatar -->
           <figure
             class="testimonial"
             itemscope
@@ -313,6 +338,7 @@
               class="avatar"
               loading="lazy"
             />
+            <div class="badge">Verified Customer</div>
             <div
               class="stars"
               itemprop="reviewRating"
@@ -341,6 +367,7 @@
               class="avatar"
               loading="lazy"
             />
+            <div class="badge">Verified Customer</div>
             <div
               class="stars"
               itemprop="reviewRating"
@@ -369,6 +396,7 @@
               class="avatar"
               loading="lazy"
             />
+            <div class="badge">Verified Customer</div>
             <div
               class="stars"
               itemprop="reviewRating"
@@ -397,6 +425,7 @@
               class="avatar"
               loading="lazy"
             />
+            <div class="badge">Verified Customer</div>
             <div
               class="stars"
               itemprop="reviewRating"
@@ -425,16 +454,16 @@
           height="42"
         />
         <div class="footer-contact">
-          <span>
-            WhatsApp Sales:
+          <span
+            >WhatsApp Sales:
             <a
               href="https://wa.me/6282315321424"
               aria-label="Nomor WhatsApp Sales"
               target="_blank"
               rel="noopener"
               >Konsultasi disini</a
-            >
-          </span>
+            ></span
+          >
           <a href="#" class="footer-link" target="_blank" rel="noopener"
             >Syarat & Ketentuan</a
           >
@@ -445,67 +474,41 @@
             aria-label="Facebook"
             target="_blank"
             rel="noopener"
-          >
-            <img
+            ><img
               src="icon_fb.png"
               alt="Facebook"
               loading="lazy"
               width="26"
               height="26"
-            />
-          </a>
+          /></a>
           <a
             href="https://www.instagram.com/indihome/"
             aria-label="Instagram"
             target="_blank"
             rel="noopener"
-          >
-            <img
+            ><img
               src="icon_ig.png"
               alt="Instagram"
               loading="lazy"
               width="26"
               height="26"
-            />
-          </a>
+          /></a>
           <a
             href="https://x.com/indihome/"
             aria-label="X"
             target="_blank"
             rel="noopener"
-          >
-            <img
+            ><img
               src="icon_x.png"
               alt="X"
               loading="lazy"
               width="26"
               height="26"
-            />
-          </a>
+          /></a>
         </div>
       </div>
     </footer>
-    <script>
-      // FAQ Accordion Improvement: accessible toggle
-      function toggleFaq(idx) {
-        const btn = document.getElementById("btn-faq-" + idx);
-        const ans = document.getElementById("faq-" + idx);
-        const expanded = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", !expanded);
-        ans.hidden = expanded;
-        if (!expanded) ans.focus();
-      }
-      // Language Switcher aria-pressed toggle example (add your own logic here)
-      document.querySelectorAll(".btn-lang").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          document
-            .querySelectorAll(".btn-lang")
-            .forEach((b) => b.setAttribute("aria-pressed", "false"));
-          this.setAttribute("aria-pressed", "true");
-          // Add logic to switch language here
-        });
-      });
-    </script>
     <script src="scripts.js" defer></script>
+    <script src="promo-exposure.js" defer></script>
   </body>
 </html>

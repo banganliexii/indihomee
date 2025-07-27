@@ -1,5 +1,6 @@
-// IMPROVED JS: Matches HTML & CSS improvisasi
-// - Sticky CTA, FAQ accordion, language switcher, testimonials with avatars/badges, accessible package slider, and ripple effect
+// IMPROVED JS: Matches HTML improvisasi terbaru
+// - Tidak render gambar promo utama, package-card sudah termasuk promo utama (jika ada)
+// - Badge "Verified Customer" HANYA satu, di bawah avatar, tidak di dalam figcaption
 
 const packagesData = {
   id: [
@@ -11,8 +12,6 @@ const packagesData = {
       desc: "Cocok untuk rumah kecil & streaming santai",
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar1.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -22,8 +21,6 @@ const packagesData = {
       desc: "Termasuk paket suara & SMS. Ideal untuk rumah aktif & gamer",
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar2.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -33,8 +30,6 @@ const packagesData = {
       desc: "Gratis Netflix + Disney+ Hotstar. Untuk pecinta film",
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar3.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -44,8 +39,6 @@ const packagesData = {
       desc: "Berbagi data keluarga + suara & SMS. Pas untuk keluarga besar",
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar4.png",
-      badge: "Verified Customer",
     },
   ],
   en: [
@@ -57,8 +50,6 @@ const packagesData = {
       desc: "Ideal for small homes & casual streaming",
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar1.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -68,8 +59,6 @@ const packagesData = {
       desc: "Includes voice & SMS. Perfect for active homes & gamers",
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar2.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -79,8 +68,6 @@ const packagesData = {
       desc: "Free Netflix + Disney+ Hotstar. For movie lovers",
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar3.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -90,8 +77,6 @@ const packagesData = {
       desc: "Family data sharing + voice & SMS. Great for big families",
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
-      avatar: "avatar4.png",
-      badge: "Verified Customer",
     },
   ],
 };
@@ -136,28 +121,24 @@ const texts = {
         text: "Internet stabil, streaming Netflix & Disney+ lancar banget. Layanan pelanggan cepat tanggap!",
         reviewer: "— Bapak A",
         avatar: "BAPAK1.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Harga masuk akal, pemasangan cepat, cocok untuk keluarga kecil atau besar. Recommended!",
         reviewer: "— Ibu B",
         avatar: "IBUK 1.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Saya suka bisa berbagi data keluarga, TV channel premium juga banyak pilihan.",
         reviewer: "— Bapak D",
         avatar: "BAPAK2.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Customer service sangat baik dan pemasangan cepat. Cocok untuk keluarga!",
         reviewer: "— Ibu F",
         avatar: "IBUK2.png",
-        badge: "Verified Customer",
       },
     ],
   },
@@ -200,28 +181,24 @@ const texts = {
         text: "Stable internet, Netflix & Disney+ streaming is super smooth. Responsive customer service!",
         reviewer: "— Mr A",
         avatar: "BAPAK1.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Reasonable price, fast installation, perfect for all families. Highly recommended!",
         reviewer: "— Ms B",
         avatar: "IBUK 1.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Love the family data sharing, premium TV channels have many choices.",
         reviewer: "— Mr D",
         avatar: "BAPAK2.png",
-        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Customer service is excellent and the installation was fast. Highly recommended for families!",
         reviewer: "— Ms F",
-        avatar: "avatar4.png",
-        badge: "Verified Customer",
+        avatar: "IBUK2.png",
       },
     ],
   },
@@ -240,7 +217,6 @@ function renderPackageCards() {
     card.className = "package-card animate__animated";
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-label", pkg.name);
-
     card.style.animationDelay = `${i * 0.15}s`;
     card.classList.add("animate__fadeInUp");
 
@@ -252,8 +228,7 @@ function renderPackageCards() {
       <div class="package-speed">${pkg.speed}</div>
       <div class="package-price">${pkg.price}</div>
       <div class="package-desc">${pkg.desc}</div>
-      <button
-        class="package-cta btn-main ripple"
+      <button class="package-cta btn-main ripple"
         data-link="${pkg.link}"
         data-name="${pkg.name}"
         data-lang="${currentLang}"
@@ -261,6 +236,32 @@ function renderPackageCards() {
       >${pkg.cta}</button>
     `;
     packageSlider.appendChild(card);
+  });
+
+  //exposure promo text
+  // IMPROVISASI: Promo Exposure Overlay
+  document.addEventListener("DOMContentLoaded", function () {
+    const overlay = document.getElementById("promo-exposure-overlay");
+    const closeBtn = overlay.querySelector(".promo-exposure-close");
+    let overlayTimeout;
+
+    overlay.removeAttribute("hidden");
+
+    overlayTimeout = setTimeout(() => {
+      overlay.setAttribute("hidden", "true");
+    }, 60000);
+
+    closeBtn.addEventListener("click", () => {
+      overlay.setAttribute("hidden", "true");
+      clearTimeout(overlayTimeout);
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay && !overlay.hasAttribute("hidden")) {
+        overlay.setAttribute("hidden", "true");
+        clearTimeout(overlayTimeout);
+      }
+    });
   });
 
   // Animate icons on mouseover
@@ -276,18 +277,14 @@ function renderPackageCards() {
   // Ripple effect for buttons
   packageSlider.querySelectorAll(".ripple").forEach((btn) => {
     btn.addEventListener("click", function (e) {
-      // WhatsApp Link with Template Pesan
       const link = btn.getAttribute("data-link");
       const name = btn.getAttribute("data-name");
       const lang = btn.getAttribute("data-lang");
-      let pesan = "";
-      if (lang === "id") {
-        pesan = `Saya ingin berlangganan paket ${name}`;
-      } else {
-        pesan = `I want to subscribe to the ${name} package`;
-      }
-      const waLink = `${link}?text=${encodeURIComponent(pesan)}`;
-      window.open(waLink, "_blank");
+      let pesan =
+        lang === "id"
+          ? `Saya ingin berlangganan paket ${name}`
+          : `I want to subscribe to the ${name} package`;
+      window.open(`${link}?text=${encodeURIComponent(pesan)}`, "_blank");
 
       // Ripple Animation
       const circle = document.createElement("span");
@@ -300,17 +297,12 @@ function renderPackageCards() {
   });
 }
 
-// Render Promo Images (image1, image2, image3, image5) after heading
+// Render Promo Images (tanpa gambar promo utama)
 function renderPromoImages() {
   let promoImagesContainer = document.querySelector(".package-images");
   if (!promoImagesContainer) {
     promoImagesContainer = document.createElement("div");
     promoImagesContainer.className = "package-images";
-    promoImagesContainer.style.display = "flex";
-    promoImagesContainer.style.flexWrap = "wrap";
-    promoImagesContainer.style.gap = "24px";
-    promoImagesContainer.style.justifyContent = "center";
-    promoImagesContainer.style.marginBottom = "32px";
     const paketHeading = document.getElementById("paket-heading");
     if (paketHeading && paketHeading.parentNode) {
       paketHeading.parentNode.insertBefore(
@@ -323,7 +315,6 @@ function renderPromoImages() {
     <img src="Paket Dynamic.jpg" alt="Paket Telkomsel One Dynamic" width="100" loading="lazy" />
     <img src="Paket EZnet.jpg" alt="Paket EZnet by Telkomsel" width="100" loading="lazy" />
     <img src="Paket Indihome Telkomsel.jpg" alt="Paket IndiHome by Telkomsel" width="100" loading="lazy" />
-    <img src="Promo Paket One Dynamic 20Mbps+30GB.png" alt="Promo Paket One Dynamic 20Mbps+30GB - Hemat & Cepat" loading="lazy" width="100" />
   `;
 }
 
@@ -361,7 +352,7 @@ function initPackageSlider() {
   });
 }
 
-// FAQ Accordion with Slide Animation & Accessibility
+// FAQ Accordion Improvement
 function initFAQAccordion() {
   document.querySelectorAll(".faq-question").forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -406,12 +397,10 @@ function initContactForm() {
       return;
     }
 
-    let waMsg;
-    if (currentLang === "id") {
-      waMsg = `Halo IndiHome! Saya ${name} (${phone}) ingin klaim promo paket ${packageName}.`;
-    } else {
-      waMsg = `Hello IndiHome! I am ${name} (${phone}) and want to claim the promo for ${packageName} package.`;
-    }
+    let waMsg =
+      currentLang === "id"
+        ? `Halo IndiHome! Saya ${name} (${phone}) ingin klaim promo paket ${packageName}.`
+        : `Hello IndiHome! I am ${name} (${phone}) and want to claim the promo for ${packageName} package.`;
     const waLink = `https://wa.me/6282315321424?text=${encodeURIComponent(
       waMsg
     )}`;
@@ -443,7 +432,7 @@ function initLangSwitcher() {
   });
 }
 
-// Rerender all text (hero, headings, benefits, CTA, FAQ, testimonials, form, images)
+// Rerender all text (hero, headings, benefits, CTA, FAQ, testimonials, form)
 function rerenderText() {
   document.getElementById("hero-title").innerHTML =
     texts[currentLang].heroTitle;
@@ -478,16 +467,18 @@ function rerenderText() {
     ans.style.maxHeight = null;
   });
 
-  // Testimonials (with avatar + badge)
+  // Testimonials (avatar & badge di bawah avatar)
   const testimonials = document.querySelectorAll(".testimonial");
   texts[currentLang].testimonials.forEach((item, idx) => {
     testimonials[idx].querySelector(".stars").innerText = item.stars;
     testimonials[idx].querySelector(
       "figcaption"
-    ).innerHTML = `<span class="badge">${item.badge}</span>"${item.text}"<br /><span class="reviewer">${item.reviewer}</span>`;
+    ).innerHTML = `"${item.text}"<br /><span class="reviewer">${item.reviewer}</span>`;
     testimonials[idx].querySelector("img.avatar").src = item.avatar;
     testimonials[idx].querySelector("img.avatar").alt =
       "Avatar " + item.reviewer;
+    // badge tetap satu di bawah avatar, tidak di dalam figcaption
+    // tidak perlu update text badge, karena static "Verified Customer"
   });
 
   // Form
@@ -503,11 +494,9 @@ function rerenderText() {
 
   renderPackageCards();
   renderPromoImages();
-  // Re-init slider events after re-render
   initPackageSlider();
 }
 
-// On DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   renderPromoImages();
   renderPackageCards();
@@ -516,7 +505,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initLangSwitcher();
 
-  // Set initial aria-pressed for lang switcher
   document.getElementById("lang-id").setAttribute("aria-pressed", "true");
   document.getElementById("lang-en").setAttribute("aria-pressed", "false");
 
@@ -526,6 +514,6 @@ document.addEventListener("DOMContentLoaded", () => {
     testimonials[idx].querySelector("img.avatar").src = item.avatar;
     testimonials[idx].querySelector("img.avatar").alt =
       "Avatar " + item.reviewer;
-    testimonials[idx].querySelector(".badge").innerText = item.badge;
+    // badge static, tidak perlu update
   });
 });
