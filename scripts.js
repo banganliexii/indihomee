@@ -249,7 +249,7 @@ function renderPackageCards() {
 
     overlayTimeout = setTimeout(() => {
       overlay.setAttribute("hidden", "true");
-    }, 60000);
+    }, 5000); // 5 detik
 
     closeBtn.addEventListener("click", () => {
       overlay.setAttribute("hidden", "true");
