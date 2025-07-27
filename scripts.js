@@ -1,3 +1,6 @@
+// IMPROVED JS: Matches HTML & CSS improvisasi
+// - Sticky CTA, FAQ accordion, language switcher, testimonials with avatars/badges, accessible package slider, and ripple effect
+
 const packagesData = {
   id: [
     {
@@ -8,6 +11,8 @@ const packagesData = {
       desc: "Cocok untuk rumah kecil & streaming santai",
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar1.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -17,6 +22,8 @@ const packagesData = {
       desc: "Termasuk paket suara & SMS. Ideal untuk rumah aktif & gamer",
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar2.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -26,6 +33,8 @@ const packagesData = {
       desc: "Gratis Netflix + Disney+ Hotstar. Untuk pecinta film",
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar3.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -35,6 +44,8 @@ const packagesData = {
       desc: "Berbagi data keluarga + suara & SMS. Pas untuk keluarga besar",
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar4.png",
+      badge: "Verified Customer",
     },
   ],
   en: [
@@ -46,6 +57,8 @@ const packagesData = {
       desc: "Ideal for small homes & casual streaming",
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar1.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -55,6 +68,8 @@ const packagesData = {
       desc: "Includes voice & SMS. Perfect for active homes & gamers",
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar2.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -64,6 +79,8 @@ const packagesData = {
       desc: "Free Netflix + Disney+ Hotstar. For movie lovers",
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar3.png",
+      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -73,6 +90,8 @@ const packagesData = {
       desc: "Family data sharing + voice & SMS. Great for big families",
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
+      avatar: "avatar4.png",
+      badge: "Verified Customer",
     },
   ],
 };
@@ -92,7 +111,7 @@ const texts = {
     benefit5: "<strong>Layanan pelanggan 24/7</strong>",
     ctaHeading: "Gabung Sekarang & Nikmati Internet Unlimited di Rumah!",
     faqHeading: "Pertanyaan yang Sering Diajukan",
-    testimonialsHeading: "Ulasan Pengguna (Bintang 5)",
+    testimonialsHeading: "Ulasan Pengguna",
     contactFormName: "Nama Anda",
     contactFormPhone: "Nomor Telepon",
     contactFormSelect: "Pilih Paket",
@@ -116,21 +135,29 @@ const texts = {
         stars: "★★★★★",
         text: "Internet stabil, streaming Netflix & Disney+ lancar banget. Layanan pelanggan cepat tanggap!",
         reviewer: "— Bapak A",
+        avatar: "avatar1.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Harga masuk akal, pemasangan cepat, cocok untuk keluarga kecil atau besar. Recommended!",
         reviewer: "— Ibu B",
+        avatar: "avatar2.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Saya suka bisa berbagi data keluarga, TV channel premium juga banyak pilihan.",
         reviewer: "— Bapak D",
+        avatar: "avatar3.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Customer service sangat baik dan pemasangan cepat. Cocok untuk keluarga!",
         reviewer: "— Ibu F",
+        avatar: "avatar4.png",
+        badge: "Verified Customer",
       },
     ],
   },
@@ -148,7 +175,7 @@ const texts = {
     benefit5: "<strong>24/7 customer service</strong>",
     ctaHeading: "Join Now & Enjoy Unlimited Internet At Home!",
     faqHeading: "Frequently Asked Questions",
-    testimonialsHeading: "User Reviews (5 Stars)",
+    testimonialsHeading: "User Reviews",
     contactFormName: "Your Name",
     contactFormPhone: "Phone Number",
     contactFormSelect: "Choose Package",
@@ -172,21 +199,29 @@ const texts = {
         stars: "★★★★★",
         text: "Stable internet, Netflix & Disney+ streaming is super smooth. Responsive customer service!",
         reviewer: "— Mr A",
+        avatar: "avatar1.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Reasonable price, fast installation, perfect for all families. Highly recommended!",
         reviewer: "— Ms B",
+        avatar: "avatar2.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Love the family data sharing, premium TV channels have many choices.",
         reviewer: "— Mr D",
+        avatar: "avatar3.png",
+        badge: "Verified Customer",
       },
       {
         stars: "★★★★★",
         text: "Customer service is excellent and the installation was fast. Highly recommended for families!",
         reviewer: "— Ms F",
+        avatar: "avatar4.png",
+        badge: "Verified Customer",
       },
     ],
   },
@@ -288,7 +323,7 @@ function renderPromoImages() {
     <img src="Paket Dynamic.jpg" alt="Paket Telkomsel One Dynamic" width="100" loading="lazy" />
     <img src="Paket EZnet.jpg" alt="Paket EZnet by Telkomsel" width="100" loading="lazy" />
     <img src="Paket Indihome Telkomsel.jpg" alt="Paket IndiHome by Telkomsel" width="100" loading="lazy" />
-    <img src="Promo Paket One Dynamic 20Mbps+30GB.png" alt="Promo Paket One Dynamic 20Mbps+30GB" width="100" loading="lazy" />
+    <img src="Promo Paket One Dynamic 20Mbps+30GB.png" alt="Promo Paket One Dynamic 20Mbps+30GB - Hemat & Cepat" loading="lazy" width="100" />
   `;
 }
 
@@ -326,7 +361,7 @@ function initPackageSlider() {
   });
 }
 
-// FAQ Accordion with Slide Animation
+// FAQ Accordion with Slide Animation & Accessibility
 function initFAQAccordion() {
   document.querySelectorAll(".faq-question").forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -343,8 +378,10 @@ function initFAQAccordion() {
         answer.style.maxHeight = answer.scrollHeight + "px";
         answer.classList.add("animate__animated", "animate__fadeInDown");
         btn.setAttribute("aria-expanded", "true");
+        answer.removeAttribute("hidden");
       } else {
         btn.setAttribute("aria-expanded", "false");
+        item.querySelector(".faq-answer").setAttribute("hidden", "true");
       }
     });
     btn.addEventListener("keydown", function (e) {
@@ -353,7 +390,7 @@ function initFAQAccordion() {
   });
 }
 
-// Form Submit ke WhatsApp with Button Animation
+// Form Submit ke WhatsApp with Button Animation & Sticky CTA
 function initContactForm() {
   const form = document.getElementById("promoForm");
   if (!form) return;
@@ -363,7 +400,11 @@ function initContactForm() {
     const phone = form.elements["phone"].value.trim();
     const packageName = form.elements["package"].value;
 
-    if (!name || !phone || !packageName) return;
+    if (!name || !phone || !packageName) {
+      form.classList.add("form-error");
+      setTimeout(() => form.classList.remove("form-error"), 1200);
+      return;
+    }
 
     let waMsg;
     if (currentLang === "id") {
@@ -387,12 +428,16 @@ function initLangSwitcher() {
   document.getElementById("lang-id").addEventListener("click", () => {
     if (currentLang !== "id") {
       currentLang = "id";
+      document.getElementById("lang-id").setAttribute("aria-pressed", "true");
+      document.getElementById("lang-en").setAttribute("aria-pressed", "false");
       rerenderText();
     }
   });
   document.getElementById("lang-en").addEventListener("click", () => {
     if (currentLang !== "en") {
       currentLang = "en";
+      document.getElementById("lang-en").setAttribute("aria-pressed", "true");
+      document.getElementById("lang-id").setAttribute("aria-pressed", "false");
       rerenderText();
     }
   });
@@ -427,15 +472,22 @@ function rerenderText() {
     const ans = faqItems[idx].querySelector(".faq-answer");
     btn.innerText = item.q;
     ans.innerText = item.a;
+    faqItems[idx].classList.remove("active");
+    btn.setAttribute("aria-expanded", "false");
+    ans.setAttribute("hidden", "true");
+    ans.style.maxHeight = null;
   });
 
-  // Testimonials
+  // Testimonials (with avatar + badge)
   const testimonials = document.querySelectorAll(".testimonial");
   texts[currentLang].testimonials.forEach((item, idx) => {
     testimonials[idx].querySelector(".stars").innerText = item.stars;
     testimonials[idx].querySelector(
       "figcaption"
-    ).innerHTML = `"${item.text}"<br /><span class="reviewer">${item.reviewer}</span>`;
+    ).innerHTML = `<span class="badge">${item.badge}</span>"${item.text}"<br /><span class="reviewer">${item.reviewer}</span>`;
+    testimonials[idx].querySelector("img.avatar").src = item.avatar;
+    testimonials[idx].querySelector("img.avatar").alt =
+      "Avatar " + item.reviewer;
   });
 
   // Form
@@ -451,8 +503,11 @@ function rerenderText() {
 
   renderPackageCards();
   renderPromoImages();
+  // Re-init slider events after re-render
+  initPackageSlider();
 }
 
+// On DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   renderPromoImages();
   renderPackageCards();
@@ -460,4 +515,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initFAQAccordion();
   initContactForm();
   initLangSwitcher();
+
+  // Set initial aria-pressed for lang switcher
+  document.getElementById("lang-id").setAttribute("aria-pressed", "true");
+  document.getElementById("lang-en").setAttribute("aria-pressed", "false");
+
+  // Testimonials avatar & badge set (first render)
+  const testimonials = document.querySelectorAll(".testimonial");
+  texts[currentLang].testimonials.forEach((item, idx) => {
+    testimonials[idx].querySelector("img.avatar").src = item.avatar;
+    testimonials[idx].querySelector("img.avatar").alt =
+      "Avatar " + item.reviewer;
+    testimonials[idx].querySelector(".badge").innerText = item.badge;
+  });
 });

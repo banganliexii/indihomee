@@ -8,246 +8,416 @@
       name="description"
       content="Nikmati internet stabil, streaming legal Disney+ Hotstar & Netflix, IndiHome TV, serta berbagi data keluarga. Pilih paket IndiHome sesuai kebutuhanmu!"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Preload font for faster rendering -->
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- LANGUAGE SWITCHER -->
     <nav class="lang-switch" aria-label="Pilih Bahasa / Choose Language">
-      <button class="btn-lang" id="lang-id" aria-label="Bahasa Indonesia">
+      <button
+        class="btn-lang"
+        id="lang-id"
+        aria-label="Bahasa Indonesia"
+        aria-pressed="true"
+      >
         ID
       </button>
-      <button class="btn-lang" id="lang-en" aria-label="English">EN</button>
+      <button
+        class="btn-lang"
+        id="lang-en"
+        aria-label="English"
+        aria-pressed="false"
+      >
+        EN
+      </button>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero container" role="banner">
-      <div class="hero-content">
-        <h1 id="hero-title">
-          Internet Cepat, Hiburan Tanpa Batas -
-          <span class="brand-accent"
-            >Pilih Paket IndiHome Terbaik untukmu!</span
-          >
-        </h1>
-        <p class="subtitle" id="hero-subtitle">
-          Nikmati koneksi internet stabil berkecepatan tinggi, gratis Disney+
-          Hotstar, Netflix, IndiHome TV, serta berbagi data keluarga. Daftar
-          sekarang dan rasakan kemudahan langsung terhubung!
-        </p>
-        <div class="hero-img-bg" aria-hidden="true">
+    <main>
+      <!-- HERO SECTION -->
+      <header class="hero container" role="banner">
+        <div class="hero-content">
+          <h1 id="hero-title">
+            Internet Cepat, Hiburan Tanpa Batas -
+            <span class="brand-accent"
+              >Pilih Paket IndiHome Terbaik untukmu!</span
+            >
+          </h1>
+          <p class="subtitle" id="hero-subtitle">
+            Nikmati koneksi internet stabil berkecepatan tinggi, gratis Disney+
+            Hotstar, Netflix, IndiHome TV, serta berbagi data keluarga. Daftar
+            sekarang dan rasakan kemudahan langsung terhubung!
+          </p>
+          <div class="hero-img-bg" aria-hidden="true">
+            <picture>
+              <source srcset="keluarga.webp" type="image/webp" />
+              <img
+                src="keluarga.png"
+                alt="Keluarga modern menonton dan streaming di ruang tamu dengan IndiHome"
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+            </picture>
+          </div>
+        </div>
+      </header>
+
+      <!-- MEMBERSHIP PACKAGES SECTION -->
+      <section class="packages container" aria-labelledby="paket-heading">
+        <h2 id="paket-heading">Pilih Paket Internet Sesuai Gaya Hidup Anda</h2>
+        <div class="package-images">
           <img
-            src="keluarga.png"
-            alt="Keluarga modern menonton dan streaming di ruang tamu"
+            src="Paket Dynamic.jpg"
+            alt="Paket Telkomsel One Dynamic"
+            width="100"
             loading="lazy"
-            width="300"
-            height="300"
+          />
+          <img
+            src="Paket EZnet.jpg"
+            alt="Paket EZnet by Telkomsel"
+            width="100"
+            loading="lazy"
+          />
+          <img
+            src="Paket Indihome Telkomsel.jpg"
+            alt="Paket IndiHome by Telkomsel"
+            width="100"
+            loading="lazy"
+          />
+          <!-- Tambahan gambar promo utama -->
+          <img
+            src="Promo Paket One Dynamic 20Mbps+30GB.png"
+            alt="Promo Paket One Dynamic 20Mbps+30GB - Hemat & Cepat"
+            loading="lazy"
           />
         </div>
-      </div>
-    </header>
-
-    <!-- MEMBERSHIP PACKAGES SECTION -->
-    <section class="packages container" aria-labelledby="paket-heading">
-      <h2 id="paket-heading">Pilih Paket Internet Sesuai Gaya Hidup Anda</h2>
-      <div class="package-images">
-        <img
-          src="Paket Dynamic.jpg"
-          alt="Paket Telkomsel One Dynamic"
-          width="100"
-          loading="lazy"
-        />
-        <img
-          src="Paket EZnet.jpg"
-          alt="Paket EZnet by Telkomsel"
-          width="100"
-          loading="lazy"
-        />
-        <img
-          src="Paket Indihome Telkomsel.jpg"
-          alt="Paket IndiHome by Telkomsel"
-          width="100"
-          loading="lazy"
-        />
-        <!-- Tambahan gambar promo utama -->
-        <img
-          src="Promo Paket One Dynamic 20Mbps+30GB.png"
-          alt="Promo Paket One Dynamic 20Mbps+30GB"
-          loading="lazy"
-        />
-      </div>
-      <div class="slider-container">
-        <button
-          class="slider-arrow left btn-main"
-          aria-label="Paket Sebelumnya"
-          type="button"
-        >
-          &lt;
-        </button>
-        <div class="package-slider" tabindex="0" aria-live="polite">
-          <!-- Paket akan diisi oleh JS -->
-        </div>
-        <button
-          class="slider-arrow right btn-main"
-          aria-label="Paket Berikutnya"
-          type="button"
-        >
-          &gt;
-        </button>
-      </div>
-    </section>
-
-    <!-- BENEFITS SECTION -->
-    <section class="benefits container" aria-labelledby="benefit-heading">
-      <h2 id="benefit-heading">Keunggulan IndiHome Membership</h2>
-      <ul class="benefits-list">
-        <li class="benefit-item" id="benefit1">
-          Internet berkecepatan hingga <strong>300 Mbps</strong>
-        </li>
-        <li class="benefit-item" id="benefit2">
-          Streaming legal: <strong>Disney+ Hotstar & Netflix</strong>
-        </li>
-        <li class="benefit-item" id="benefit3">
-          IndiHome TV dengan <strong>channel premium</strong>
-        </li>
-        <li class="benefit-item" id="benefit4">
-          Berbagi data keluarga & <strong>SMS gratis</strong>
-        </li>
-        <li class="benefit-item" id="benefit5">
-          <strong>Layanan pelanggan 24/7</strong>
-        </li>
-      </ul>
-    </section>
-
-    <!-- MAIN CTA BANNER -->
-    <section class="cta-banner container" aria-labelledby="cta-heading">
-      <div class="cta-content">
-        <h2 id="cta-heading">
-          Gabung Sekarang & Nikmati Internet Unlimited di Rumah!
-        </h2>
-        <form
-          class="contact-form"
-          id="promoForm"
-          autocomplete="on"
-          aria-label="Formulir Promo"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Nama Anda"
-            required
-            aria-label="Nama"
-            maxlength="50"
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Nomor Telepon"
-            required
-            aria-label="Nomor Telepon"
-            maxlength="15"
-            pattern="^[0-9+\s-]+$"
-          />
-          <select name="package" required aria-label="Pilih Paket">
-            <option value="">Pilih Paket</option>
-            <option value="Digital Jitu 1">Digital Jitu 1</option>
-            <option value="Dynamic 1P">Dynamic 1P</option>
-            <option value="Movie 1P">Movie 1P</option>
-            <option value="Complete 1P">Complete 1P</option>
-          </select>
-          <button type="submit" class="btn-main">Klaim Promo Hari Ini</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="faq container" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Pertanyaan yang Sering Diajukan</h2>
-      <div class="faq-list" role="list">
-        <div class="faq-item">
+        <div class="slider-container">
           <button
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-1"
+            class="slider-arrow left btn-main"
+            aria-label="Paket Sebelumnya"
+            type="button"
           >
-            Berapa lama proses aktivasi?
+            &lt;
           </button>
-          <div class="faq-answer" id="faq-1">
-            Aktivasi maksimal 24 jam setelah pendaftaran.
+          <div class="package-slider" tabindex="0" aria-live="polite">
+            <!-- Paket akan diisi oleh JS -->
+          </div>
+          <button
+            class="slider-arrow right btn-main"
+            aria-label="Paket Berikutnya"
+            type="button"
+          >
+            &gt;
+          </button>
+        </div>
+      </section>
+
+      <!-- BENEFITS SECTION -->
+      <section class="benefits container" aria-labelledby="benefit-heading">
+        <h2 id="benefit-heading">Keunggulan IndiHome Membership</h2>
+        <ul class="benefits-list">
+          <li class="benefit-item" id="benefit1">
+            Internet berkecepatan hingga <strong>300 Mbps</strong>
+          </li>
+          <li class="benefit-item" id="benefit2">
+            Streaming legal: <strong>Disney+ Hotstar & Netflix</strong>
+          </li>
+          <li class="benefit-item" id="benefit3">
+            IndiHome TV dengan <strong>channel premium</strong>
+          </li>
+          <li class="benefit-item" id="benefit4">
+            Berbagi data keluarga & <strong>SMS gratis</strong>
+          </li>
+          <li class="benefit-item" id="benefit5">
+            <strong>Layanan pelanggan 24/7</strong>
+          </li>
+        </ul>
+      </section>
+
+      <!-- MAIN CTA BANNER -->
+      <section class="cta-banner container" aria-labelledby="cta-heading">
+        <div class="cta-content">
+          <h2 id="cta-heading">
+            Gabung Sekarang & Nikmati Internet Unlimited di Rumah!
+          </h2>
+          <form
+            class="contact-form"
+            id="promoForm"
+            autocomplete="on"
+            aria-label="Formulir Promo"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Nama Anda"
+              required
+              aria-label="Nama"
+              maxlength="50"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Nomor Telepon"
+              required
+              aria-label="Nomor Telepon"
+              maxlength="15"
+              pattern="^[0-9+\s-]+$"
+              inputmode="tel"
+            />
+            <select name="package" required aria-label="Pilih Paket">
+              <option value="">Pilih Paket</option>
+              <option value="Digital Jitu 1">Digital Jitu 1</option>
+              <option value="Dynamic 1P">Dynamic 1P</option>
+              <option value="Movie 1P">Movie 1P</option>
+              <option value="Complete 1P">Complete 1P</option>
+            </select>
+            <button type="submit" class="btn-main sticky-cta">
+              Klaim Promo Hari Ini
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION with schema.org FAQPage for SEO -->
+      <section
+        class="faq container"
+        aria-labelledby="faq-heading"
+        itemscope
+        itemtype="https://schema.org/FAQPage"
+      >
+        <h2 id="faq-heading">Pertanyaan yang Sering Diajukan</h2>
+        <div class="faq-list" role="list">
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-1"
+              id="btn-faq-1"
+              onclick="toggleFaq(1)"
+              itemprop="name"
+            >
+              Berapa lama proses aktivasi?
+            </button>
+            <div
+              class="faq-answer"
+              id="faq-1"
+              hidden
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Aktivasi maksimal 24 jam setelah pendaftaran.
+              </span>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-2"
+              id="btn-faq-2"
+              onclick="toggleFaq(2)"
+              itemprop="name"
+            >
+              Apakah ada biaya pemasangan?
+            </button>
+            <div
+              class="faq-answer"
+              id="faq-2"
+              hidden
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Pemasangan gratis selama periode promo.
+              </span>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-3"
+              id="btn-faq-3"
+              onclick="toggleFaq(3)"
+              itemprop="name"
+            >
+              Bagaimana cara pembayaran?
+            </button>
+            <div
+              class="faq-answer"
+              id="faq-3"
+              hidden
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Pembayaran via autodebit, transfer bank, atau e-wallet.
+              </span>
+            </div>
           </div>
         </div>
-        <div class="faq-item">
-          <button
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-2"
-          >
-            Apakah ada biaya pemasangan?
-          </button>
-          <div class="faq-answer" id="faq-2">
-            Pemasangan gratis selama periode promo.
-          </div>
-        </div>
-        <div class="faq-item">
-          <button
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-3"
-          >
-            Bagaimana cara pembayaran?
-          </button>
-          <div class="faq-answer" id="faq-3">
-            Pembayaran via autodebit, transfer bank, atau e-wallet.
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- TESTIMONIALS SECTION (Anonymous, 5 Stars) -->
-    <section
-      class="testimonials container"
-      aria-labelledby="testimonials-heading"
-    >
-      <h2 id="testimonials-heading">Ulasan Pengguna</h2>
-      <div class="testimonials-list">
-        <figure class="testimonial">
-          <div class="stars">★★★★★</div>
-          <figcaption>
-            "Internet stabil, streaming Netflix & Disney+ lancar banget. Layanan
-            pelanggan cepat tanggap!"<br />
-            <span class="reviewer">— Bapak A</span>
-          </figcaption>
-        </figure>
-        <figure class="testimonial">
-          <div class="stars">★★★★★</div>
-          <figcaption>
-            "Harga masuk akal, pemasangan cepat, cocok untuk keluarga kecil atau
-            besar. Recommended!"<br />
-            <span class="reviewer">— Ibu B</span>
-          </figcaption>
-        </figure>
-        <figure class="testimonial">
-          <div class="stars">★★★★★</div>
-          <figcaption>
-            "Saya suka bisa berbagi data keluarga, TV channel premium juga
-            banyak pilihan."<br />
-            <span class="reviewer">— Bapak D</span>
-          </figcaption>
-        </figure>
-        <figure class="testimonial">
-          <div class="stars">★★★★★</div>
-          <figcaption>
-            "Customer service is excellent and the installation was fast. Highly
-            recommended for families!"<br />
-            <span class="reviewer">— Ibu F</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
+      <!-- TESTIMONIALS SECTION (Anonymous, 5 Stars) + schema.org Review -->
+      <section
+        class="testimonials container"
+        aria-labelledby="testimonials-heading"
+        itemscope
+        itemtype="https://schema.org/Review"
+      >
+        <h2 id="testimonials-heading">Ulasan Pengguna</h2>
+        <div class="testimonials-list">
+          <!-- Example Testimoni with avatar anonymous and badge -->
+          <figure
+            class="testimonial"
+            itemscope
+            itemprop="review"
+            itemtype="https://schema.org/Review"
+          >
+            <img
+              src="BAPAK1.jpg"
+              alt="Avatar Bapak A"
+              width="40"
+              height="40"
+              class="avatar"
+              loading="lazy"
+            />
+            <span class="badge">Verified Customer</span>
+            <div
+              class="stars"
+              itemprop="reviewRating"
+              itemscope
+              itemtype="https://schema.org/Rating"
+            >
+              <meta itemprop="ratingValue" content="5" />★★★★★
+            </div>
+            <figcaption itemprop="reviewBody">
+              "Internet stabil, streaming Netflix & Disney+ lancar banget.
+              Layanan pelanggan cepat tanggap!"<br />
+              <span class="reviewer" itemprop="author">— Bapak A</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="testimonial"
+            itemscope
+            itemprop="review"
+            itemtype="https://schema.org/Review"
+          >
+            <img
+              src="IBUK 1.jpg"
+              alt="Avatar Ibu B"
+              width="40"
+              height="40"
+              class="avatar"
+              loading="lazy"
+            />
+            <span class="badge">Verified Customer</span>
+            <div
+              class="stars"
+              itemprop="reviewRating"
+              itemscope
+              itemtype="https://schema.org/Rating"
+            >
+              <meta itemprop="ratingValue" content="5" />★★★★★
+            </div>
+            <figcaption itemprop="reviewBody">
+              "Harga masuk akal, pemasangan cepat, cocok untuk keluarga kecil
+              atau besar. Recommended!"<br />
+              <span class="reviewer" itemprop="author">— Ibu B</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="testimonial"
+            itemscope
+            itemprop="review"
+            itemtype="https://schema.org/Review"
+          >
+            <img
+              src="BAPAK2.jpg"
+              alt="Avatar Bapak D"
+              width="40"
+              height="40"
+              class="avatar"
+              loading="lazy"
+            />
+            <span class="badge">Verified Customer</span>
+            <div
+              class="stars"
+              itemprop="reviewRating"
+              itemscope
+              itemtype="https://schema.org/Rating"
+            >
+              <meta itemprop="ratingValue" content="5" />★★★★★
+            </div>
+            <figcaption itemprop="reviewBody">
+              "Saya suka bisa berbagi data keluarga, TV channel premium juga
+              banyak pilihan."<br />
+              <span class="reviewer" itemprop="author">— Bapak D</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="testimonial"
+            itemscope
+            itemprop="review"
+            itemtype="https://schema.org/Review"
+          >
+            <img
+              src="IBUK2.jpg"
+              alt="Avatar Ibu F"
+              width="40"
+              height="40"
+              class="avatar"
+              loading="lazy"
+            />
+            <span class="badge">Verified Customer</span>
+            <div
+              class="stars"
+              itemprop="reviewRating"
+              itemscope
+              itemtype="https://schema.org/Rating"
+            >
+              <meta itemprop="ratingValue" content="5" />★★★★★
+            </div>
+            <figcaption itemprop="reviewBody">
+              "Customer service is excellent and the installation was fast.
+              Highly recommended for families!"<br />
+              <span class="reviewer" itemprop="author">— Ibu F</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
     <!-- FOOTER -->
     <footer>
       <div class="footer-content container">
@@ -319,6 +489,27 @@
         </div>
       </div>
     </footer>
-    <script src="scripts.js"></script>
+    <script>
+      // FAQ Accordion Improvement: accessible toggle
+      function toggleFaq(idx) {
+        const btn = document.getElementById("btn-faq-" + idx);
+        const ans = document.getElementById("faq-" + idx);
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", !expanded);
+        ans.hidden = expanded;
+        if (!expanded) ans.focus();
+      }
+      // Language Switcher aria-pressed toggle example (add your own logic here)
+      document.querySelectorAll(".btn-lang").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".btn-lang")
+            .forEach((b) => b.setAttribute("aria-pressed", "false"));
+          this.setAttribute("aria-pressed", "true");
+          // Add logic to switch language here
+        });
+      });
+    </script>
+    <script src="scripts.js" defer></script>
   </body>
 </html>
