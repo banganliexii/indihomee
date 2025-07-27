@@ -12,7 +12,6 @@ const packagesData = {
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
       avatar: "avatar1.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -23,7 +22,6 @@ const packagesData = {
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
       avatar: "avatar2.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -34,7 +32,6 @@ const packagesData = {
       cta: "Daftar Sekarang",
       link: "https://wa.me/6282315321424",
       avatar: "avatar3.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -45,7 +42,6 @@ const packagesData = {
       cta: "Konsultasi Gratis",
       link: "https://wa.me/6282315321424",
       avatar: "avatar4.png",
-      badge: "Verified Customer",
     },
   ],
   en: [
@@ -58,7 +54,6 @@ const packagesData = {
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
       avatar: "avatar1.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-dynamic.png",
@@ -69,7 +64,6 @@ const packagesData = {
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
       avatar: "avatar2.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-movie.png",
@@ -80,7 +74,6 @@ const packagesData = {
       cta: "Register Now",
       link: "https://wa.me/6282315321424",
       avatar: "avatar3.png",
-      badge: "Verified Customer",
     },
     {
       icon: "icon-complete.png",
@@ -91,7 +84,6 @@ const packagesData = {
       cta: "Free Consultation",
       link: "https://wa.me/6282315321424",
       avatar: "avatar4.png",
-      badge: "Verified Customer",
     },
   ],
 };
